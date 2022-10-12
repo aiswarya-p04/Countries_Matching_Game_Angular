@@ -1,0 +1,13 @@
+<div *ngIf="data.length; else elseBlock">
+  <span *ngFor="let pair of data">
+    <span *ngFor="let item of pair | keyvalue">
+      <button class="btn" (click)="keyValueClicked(pair, item.key)">
+        {{ item.key }}
+      </button>
+      <button class="btn" (click)="keyValueClicked(pair, item.value)">
+        {{ item.value }}
+      </button>
+    </span>
+  </span>
+</div>
+<ng-template #elseBlock>Congratulations!</ng-template>
