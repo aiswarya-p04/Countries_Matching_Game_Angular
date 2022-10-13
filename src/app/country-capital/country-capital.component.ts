@@ -10,7 +10,7 @@ type Data = {
 })
 export class CountryCapitalComponent {
   @Input() data: any;
-
+  redButtons: any = [];
   firstClickData: any = "";
 
   capital: any = "";
@@ -20,6 +20,7 @@ export class CountryCapitalComponent {
     console.log("mouse click", keyValueItem);
     //On first click of button
     if (this.firstClickData === "") {
+      this.redButtons=[];
       this.firstClickData = keyValueItem;     //firstclick= India
       console.log("firstclick", this.firstClickData)
       this.capital = Object.values(pair);  //capital: ['Delhi']
@@ -48,12 +49,16 @@ export class CountryCapitalComponent {
       }
       else {
         console.log("red")
-        this.firstClickData = "";
+
+
       }
+      this.redButtons.push(this.firstClickData, keyValueItem);
+        console.log('danger', this.redButtons)
       this.firstClickData = "";
       keyValueItem = "";
       this.capital = "";
       pair = ""
+
     }
 
   }

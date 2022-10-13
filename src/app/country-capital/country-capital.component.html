@@ -1,12 +1,28 @@
 <div *ngIf="data.length; else elseBlock">
   <span *ngFor="let pair of data">
     <span *ngFor="let item of pair | keyvalue">
-      <button class="btn" (click)="keyValueClicked(pair, item.key)">
-        {{ item.key }}
-      </button>
-      <button class="btn" (click)="keyValueClicked(pair, item.value)">
-        {{ item.value }}
-      </button>
+      <span *ngIf="redButtons.includes(item.key); else firstelseBlock">
+        <button class="redbtn" (click)="keyValueClicked(pair, item.key)">
+          {{ item.key }}
+        </button>
+      </span>
+      <ng-template #firstelseBlock>
+        <button class="btn" (click)="keyValueClicked(pair, item.key)">
+          {{ item.key }}
+        </button>
+
+      </ng-template>
+<span *ngIf="redButtons.includes(item.value); else newelseBlock">
+  <button class="redbtn" (click)="keyValueClicked(pair, item.value)">
+    {{ item.value }}
+  </button>
+</span>
+<ng-template #newelseBlock>
+
+  <button class="btn" (click)="keyValueClicked(pair, item.value)">
+    {{ item.value }}
+  </button>
+</ng-template>
     </span>
   </span>
 </div>

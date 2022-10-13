@@ -1,3 +1,6 @@
 .btn:focus {
   background-color: blue;
 }
+.redbtn{
+  background-color: red;
+}
